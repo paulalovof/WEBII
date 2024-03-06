@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/simples', function () {
+    return "<h1>Rota Simples</h1>";
+});
 
 Route::get('/', function () {
     return view('welcome');
