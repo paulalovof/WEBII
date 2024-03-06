@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/eixo', '\App\Http\Controllers\EixoController');
+Route::resource('/nivel', '\App\Http\Controllers\NivelController');
+Route::resource('/curso', '\App\Http\Controllers\CursoController');
