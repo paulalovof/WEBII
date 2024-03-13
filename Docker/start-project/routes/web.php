@@ -26,3 +26,7 @@ Route::resource('/curso', '\App\Http\Controllers\CursoController');
 Route::resource('/permission', '\App\Http\Controllers\PermissionController');
 Route::resource('/turma', '\App\Http\Controllers\TurmaController');
 Route::resource('/categoria', '\App\Http\Controllers\CategoriaController');
+Route::resource('/aluno', '\App\Http\Controllers\AlunoController');
+Route::resource('/user', '\App\Http\Controllers\UserController');
+Route::resource('/comprovante', '\App\Http\Controllers\ComprovanteController');
+Route::resource('/declaracao', '\App\Http\Controllers\DeclaracaoController');
