@@ -37,7 +37,7 @@ class CategoriaController extends Controller
         if(isset($objCurso)) {
             $obj = new Categoria();
             $obj->nome = mb_strtoupper($request->nome, 'UTF-8');
-            $obj->maximo_horas = $request->horas;
+            $obj->maximo_horas = $request->maximo_horas;
             $obj->curso()->associate($objCurso);
 
             $this->repository->save($obj);

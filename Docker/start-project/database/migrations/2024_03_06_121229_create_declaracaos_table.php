@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->foreign('comprovante_id')->references('id')->on('comprovantes');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

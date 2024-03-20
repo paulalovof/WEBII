@@ -1,8 +1,8 @@
 <?php
 namespace App\Repositories;
-use App\Models\Resource;
+use App\Models\Resources;
 class ResourceRepository extends Repository {
     public function __construct() {
-        parent::__construct(new Resource());
+        parent::__construct(new Resources());
     }
 }

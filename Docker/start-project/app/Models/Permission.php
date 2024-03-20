@@ -13,7 +13,7 @@ class Permission extends Model
         return $this->belongsTo('\App\Models\Role');
     }
     public function resource() {
-        return $this->belongsTo('\App\Models\Resource');
+        return $this->belongsTo('\App\Models\Resources');
     }
     public static function getKeys() {
         return self::$keys;

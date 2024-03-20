@@ -18,9 +18,15 @@ class AlunoController extends Controller
     }
 
     public function index()
-    {
+    {   
         $data = $this->repository->selectAllWith(['user', 'curso', 'turma']);
         return $data;
+    }
+
+    public function register() {
+        $cursos = (new CursoRepository())->selectAll();
+        $turmas = (new TurmaRepository())->selectAll();
+        return view('aluno.register', compact(['cursos', 'turmas']));
     }
 
     /**
@@ -36,18 +42,18 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        $objUser = (new UserRepository())->findById($request->user_id);
+        //$objUser = (new UserRepository())->findById($request->user_id);
         $objCurso = (new CursoRepository())->findById($request->curso_id);
         $objTurma = (new TurmaRepository())->findById($request->turma_id);
 
-        if(isset($objUser) && isset($objCurso) && isset($objTurma)) {
+        if(isset($objCurso) && isset($objTurma)) {
             $obj = new Aluno();
             $obj->nome = mb_strtoupper($request->nome, 'UTF-8');
             $obj->cpf = $request->cpf;
             $obj->email = mb_strtolower($request->email, 'UTF-8');
             $obj->password = Hash::make($request->password); 
 
-            $obj->user()->associate($objUser);
+            //$obj->user()->associate($objUser);
             $obj->curso()->associate($objCurso);
             $obj->turma()->associate($objTurma);
 
@@ -55,7 +61,7 @@ class AlunoController extends Controller
 
             return "<h1>Store - OK!</h1>";
         }
-        return "<h1>Store - Not found User or Curso or Turma!</h1>";
+        return "<h1>Store - Not found Curso or Turma!</h1>";
     }
 
     /**

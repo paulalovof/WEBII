@@ -34,21 +34,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $objRole = (new RoleRepository())->findById($request->role_id);
         $objCurso = (new CursoRepository())->findById($request->curso_id);
-
-        if(isset($objRole) && isset($objCurso)) {
+        $objRole = (new RoleRepository())->findById($request->role_id);
+        
+        if(isset($objCurso) && isset($objRole)) {
             $obj = new User();
-            $obj->nome = mb_strtoupper($request->nome, 'UTF-8');
+            $obj->name = mb_strtoupper($request->nome, 'UTF-8');
             $obj->email = mb_strtolower($request->email, 'UTF-8');
             $obj->password = Hash::make($request->password); 
-
-            $obj->role()->associate($objRole);
             $obj->curso()->associate($objCurso);
-
+            $obj->role()->associate($objRole);
             $this->repository->save($obj);
-
-            return "<h1>Store - OK!</h1>";
+            return "<h1>Store - OK</h1>";
         }
         return "<h1>Store - Not found Role or Curso!</h1>";
     }

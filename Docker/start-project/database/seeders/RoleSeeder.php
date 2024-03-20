@@ -6,12 +6,16 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-
-    $data = [
-        ["nome" => "ADMINISTRADOR"],
-        ["nome" => "COORDENADOR"],
-        ["nome" => "PROFESSOR"],
-        ["nome" => "ALUNO"],
-    ];
-
+class RoleSeeder extends Seeder
+{
+    public function run(): void {
+        
+        $data = [
+            ["nome" => "ADMINISTRADOR"],
+            ["nome" => "COORDENADOR"],
+            ["nome" => "PROFESSOR"],
+            ["nome" => "ALUNO"],
+        ];
         DB::table('roles')->insert($data);
+    }
+}
